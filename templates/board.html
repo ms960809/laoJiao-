@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>laoJiao博客</title>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="keywords" content="个人博客,焦鹏博个人博客,个人博客系统,laoJiao博客">
+<meta name="description" content="Python博客，一个python小白的博客系统！">
+<LINK rel="Bookmark" href="/static/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/static/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/static/staticRes/js/html5shiv.js"></script>
+<script type="text/javascript" src="/static/staticRes/js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/static/plugin/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/plugin/Hui-iconfont/1.0.8/iconfont.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/static/plugin/pifu/pifu.css" />
+<link rel="stylesheet" type="text/css" href="/static/plugin/wangEditor/css/wangEditor.min.css">
+<!--[if lt IE 9]>
+<link href="/static/staticRes/lib/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } function showSide(){$('.navbar-nav').toggle();}</script>
+</head>
+<body>
+<header class="navbar-wrapper">
+    <div class="navbar navbar-fixed-top">
+        <div class="container cl">
+            <a class="navbar-logo hidden-xs" href="{% url 'index' %}">
+                <img class="logo" src="/static/img/logo.png" alt="laoJiao博客" />
+            </a>
+            <a class="logo navbar-logo-m visible-xs" href="{% url 'index' %}">laoJiao博客</a>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:void(0);" onclick="showSide();">&#xe667;</a>
+            <nav class="nav navbar-nav nav-collapse w_menu" role="navigation">
+                <ul class="cl">
+                    <li class="active"> <a href="{% url 'index' %}" data-hover="首页">首页</a> </li>
+                    <li> <a href="{% url 'about' %}" data-hover="关于我">关于我</a> </li>
+                    <li> <a href="{% url 'mood' %}" data-hover="碎言碎语">碎言碎语</a> </li>
+                    <li><a href="{% url 'article' %}" data-hover="学无止尽">学无止尽</a></li>
+                    <li> <a href="{% url 'board' %}" data-hover="留言板">写博客</a> </li>
+                </ul>
+            </nav>
+            <nav class="navbar-nav navbar-userbar hidden-xs hidden-sm " style="top: 0;">
+                <ul class="cl">
+                    <li class="userInfo dropDown dropDown_hover">
+                            {% if request.session.uname %}
+                                <a href="javascript:;" ><img class="avatar radius" src="{{ request.session.image }}" alt="{{ request.session.uname }}">
+                                </a><a href="#">{{ request.session.uname }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="{% url 'logout' %}">退出</a>
+                            {% else %}
+                                <a href="{% url 'log' %}" onclick="layer.msg('正在登入', {icon:16, shade: 0.1, time:0})" >登入</a>
+                            {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!--导航条-->
+<nav class="breadcrumb">
+    <div class="container"> <i class="Hui-iconfont">&#xe67f;</i> <a href="index.html" class="c-primary">首页</a> <span class="c-gray en">&gt;</span>  <span class="c-gray">留言板</span> </div>
+</nav>
+
+<section class="container">
+    <div class="col-xs-12 col-md-10 col-md-offset-1 mt-20">
+        <!--用于评论-->
+        <form action="{% url 'board' %}" method="post">
+            {%csrf_token%}
+            <div class="mt-20" id="ct">
+                <div id="err" class="Huialert Huialert-danger hidden radius">成功状态提示</div>
+                博客标题:<input type="text" id="textarea1" name="title" style="height:30px;width: 1025px;"><br>
+                博客内容:<br>
+                <textarea id="textarea1" name="desc" style="height:400px;width: 1025px;"> </textarea>
+                <div class="text-r mt-10">
+                    <input type="submit" class="btn btn-primary radius" ></input>
+                </div>
+            </div>
+        </form>
+        <div class="line"></div>
+    </div>
+</section>
+<footer class="footer mt-20">
+</footer>
+<script type="text/javascript" src="/static/plugin/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugin/layer/3.0/layer.js"></script>
+<script type="text/javascript" src="/static/plugin/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/plugin/pifu/pifu.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script> $(function(){ $(window).on("scroll",backToTopFun); backToTopFun(); }); </script>
+<script type="text/javascript" src="/static/plugin/wangEditor/js/wangEditor.min.js"></script>
+
+
+</body>
+</html>

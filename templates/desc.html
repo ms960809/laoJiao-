@@ -1,0 +1,23 @@
+{% extends 'article.html' %}
+
+{% block index %}
+{% endblock %}
+
+{% block bb %}
+    <i class="Hui-iconfont">&#xe67f;</i><a href="index.html" class="c-primary">首页</a>
+    <span class="c-gray en">&gt;</span><span class="c-gray">博客详情</span>
+{% endblock %}
+
+{% block desc %}
+    <li class="index_arc_item no_pic" style="height: 50px">
+        <h4 class="title"><a href="#">{{ bg.title }}</a></h4>
+        <div class="date_hits">
+            <span>{{ bg.userid }}</span>
+            <span>{{ bg.date }}</span>
+        </div>
+
+    </li>
+    <li class="index_arc_item no_pic" style="height: 900px">
+        <div class="desc" style="height: 900px;overflow: auto;">{{ bg.desc }}</div>
+    </li>
+{% endblock %}
